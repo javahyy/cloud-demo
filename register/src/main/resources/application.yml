@@ -1,0 +1,35 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: register
+  profiles:
+    active: dev
+  cloud:
+    inetutils:
+      preferred-networks: 127.0.0.1
+    client:
+      ip-address: 127.0.0.1
+eureka:
+  server:
+    peer-node-read-timeout-ms: 3000
+    enable-self-preservation: true #开启自我保护
+  instance:
+    prefer-ip-address: true #以IP地址注册
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+  #    instance-id: ${spring.application.name}:${server.port}
+  client:
+    eureka-server-port:
+    register-with-eureka: true
+    fetch-registry: false
+    healthcheck:
+      enabled: true
+    service-url:
+      defaultZone: http://127.0.0.1:8888/eureka/
+#      defaultZone: http://${spring.cloud.client.ip-address}:${server.port}/eureka
+
+
+
+
+
