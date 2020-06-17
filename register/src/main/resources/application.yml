@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: register
+    name: eurekaserver
   profiles:
     active: dev
   cloud:
@@ -14,15 +14,14 @@ spring:
 eureka:
   server:
     peer-node-read-timeout-ms: 3000
-    enable-self-preservation: true #开启自我保护
+    enable-self-preservation: false # true开启自我保护 false 关闭自我保护
   instance:
-    prefer-ip-address: true #以IP地址注册
+    prefer-ip-address: false # true以IP地址注册
     instance-id: ${spring.cloud.client.ip-address}:${server.port}
   #    instance-id: ${spring.application.name}:${server.port}
   client:
-    eureka-server-port:
-    register-with-eureka: true
-    fetch-registry: false
+    register-with-eureka: true #true允许自己注册服务 false禁止自己当做服务注册
+    fetch-registry: false #要不要去注册中心获取其他服务的地址
     healthcheck:
       enabled: true
     service-url:

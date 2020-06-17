@@ -5,7 +5,7 @@ import org.springframework.cloud.client.SpringCloudApplication;
 import org.springframework.cloud.config.server.EnableConfigServer;
 
 /**
- * 陪着中心
+ * 配置中心
  *
  * @author hyy
  * @version 1.0
